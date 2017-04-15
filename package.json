@@ -1,0 +1,26 @@
+{
+  "name": "mongoose_sample",
+  "version": "1.0.0",
+  "description": "Sample project for Mongoose",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "6.9.1"
+  },
+  "dependencies": {
+    "mongoose": "^4.9.4",
+    "lodash": "^4.17.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vbhasker/mongoose_sample.git"
+  },
+  "author": "vinodh.ab@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vbhasker/mongoose_sample/issues"
+  },
+  "homepage": "https://github.com/vbhasker/mongoose_sample#readme"
+}
