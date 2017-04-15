@@ -1,11 +1,8 @@
-/**
- * Created by vinodh on 4/15/17.
- */
 'use strict';
 
 import mongoose from 'mongoose';
 
-var bookSchema = new mongoose.Schema({
+let booksSchema = new mongoose.Schema({
     title: String,
     published: {
         type: Date,
@@ -27,4 +24,4 @@ var bookSchema = new mongoose.Schema({
     }
 });
 
-modules.exports = mongoose.model('Books', bookSchema);
+modules.exports = mongoose.model('Books', booksSchema);
