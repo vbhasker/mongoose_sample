@@ -13,6 +13,7 @@ var bookSchema = new mongoose.Schema({
     },
     keywords: Array,
     is_published: Boolean,
+    //foreign reference to author object
     author: {
         type: mongoose.Schema.ObjectId,
         ref: 'User'
