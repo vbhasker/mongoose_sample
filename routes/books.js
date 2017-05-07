@@ -11,6 +11,7 @@ router.use(function timeLog (req, res, next) {
     next();
 });
 
+
 // define the home page route
 router.get('/', function (req, res) {
     Books.find({}).
@@ -18,8 +19,36 @@ router.get('/', function (req, res) {
     then(function (books_results) {
         res.json(books_results);
     }).catch(function (err) {
-        res.send("err");
+        res.sendStatus(200);
     })
+});
+
+router.delete('/:id?', function (req, res) {
+    Books.remove({
+        _id: req.params.id
+    }).exec().then(function (count) {
+        if (count.result.n === 0){
+            res.json({message: 'No items found to delete.'});
+        } else {
+            res.json({message: 'Items deleted: ' + count.result.n});
+        }
+    }).catch(function (err) {
+        res.send(err);
+    });
+});
+
+router.put('/:id?', function (req, res) {
+    Books.findOneAndUpdate({
+        _id: req.params.id
+    }, { $set:{title: req.body.title}
+    }, {upsert:true}
+    , function (err, doc) {
+            if (err){
+                res.send(err);
+            }
+            res.sendStatus(204);
+        }
+    );
 });
 
 router.post('/', function (req, res) {
@@ -32,7 +61,7 @@ router.post('/', function (req, res) {
     new_book.save()
         .then(function () {
             res.status(201);
-            res.send("successfully created.")
+            res.json(new_book);
         }).catch(function (err) {
         res.send(err);
         res.status(404);
@@ -46,7 +75,6 @@ router.get('/:id', function (req, res) {
         .then(function(book) {
             res.json(book);
     }).catch(function (err) {
-        res.status(404);
         res.send(err);
     })
 });

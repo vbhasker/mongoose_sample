@@ -39,3 +39,6 @@ jspm_packages
 #ignore IDEA files
 mongoose_sample.iml
 .idea
+
+#ignore system files
+.DS_Store
